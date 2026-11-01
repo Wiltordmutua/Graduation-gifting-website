@@ -14,13 +14,13 @@ It displays each gift item with a title, description, and photo in a clean respo
 
 ## Files Included
 
-- `Index.html` – main page structure and gift data
+- `index.html` – main page structure and gift data
 - `Styles.css` – styling and responsive layout
 - `Images/` – project image assets
 
 ## How to View the Project
 
-Open `Index.html` in a browser to view the site.
+Open `index.html` in a browser to view the site.
 
 If you want to run it locally using a simple server:
 
@@ -36,4 +36,4 @@ http://localhost:8000
 
 ## Notes
 
-This project is designed as a personal graduation gift page and can be customized by editing the gift list in `Index.html`.
+This project is designed as a personal graduation gift page and can be customized by editing the gift list in `index.html`.
