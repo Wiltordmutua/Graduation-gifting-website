@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graduation Wishlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="page-container">
+    <header class="site-header">
+      <!-- <span class="eyebrow">My Graduation Wish List</span> -->
+      <h1>Graduation Wishlist</h1>
+      <p class="subtitle">
+        Here is a collection of things I’d love to have for my graduation. Anything not listed here is very much accepted as well, but these are some of the items that would be especially meaningful to me. Thank you for being part of this journey!
+      </p>
+    </header>
+
+    <main>
+      <div id="wishlist-grid" class="wishlist-grid"></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Thank you for being part of the journey.</p>
+      <p>&copy; 2026 WILTORD MUTUA</p>
+    </footer>
+  </div>
+
+  <script>
+    const gifts = [
+      {
+        title: "Iphone 17 Pro Max",
+        description: "Silver, 512GB, unlocked. The latest iPhone with advanced camera and performance features.",
+        image: "Images/iphone 17 pro max.jpg"
+      },
+      {
+        title: "Laptop Stand with Adjustable Height",
+        description: "Ergonomic stand for better posture during long coding sessions.",
+        image: "Images/laptop stand.jpg"
+      },
+      {
+        title: "Black Casio Watch",
+        description: "A classic timepiece for everyday wear and interviews rooms ;).",
+        image: "Images/casio watch.jpg"
+      },
+      {
+        title: "New Balance 9060 Sneakers",
+        description: "Comfortable and stylish sneakers for casual outings and daily wear.shoe size: 39",
+        image: "Images/NB 9060.jpg"
+      },
+      {
+        title: "New Balance 530 Sneakers",
+        description: "Comfortable and stylish sneakers for casual outings and daily wear.shoe size: 39",
+        image: "Images/New Balance 530.jpg"
+      },
+      {
+        title: "New Balance 550 Sneakers",
+        description: "Comfortable and stylish sneakers for casual outings and daily wear.shoe size: 39",
+        image: "Images/New Balance 550.jpg"
+      },
+      {
+        title: "Oraimo tripod Stand",
+        description: "A tripod that I'll be using for my content creation. The Oraimo OLS-201A SmartTripod 2 360 Tripod Gimbal Stabilizer.",
+        image: "Images/Oraimo OLS-201A SmartTripod 2 360 Tripod Gimbal Stabilizer.jpg"
+      },
+      {
+        title: "Oraimo Power Bank",
+        description: "For when KPLC does their thing and also for when I'm outsideee. The Oraimo PowerNova QF1 27000mAh 22.5W Power Bank.",
+        image: "Images/Oraimo PowerNova QF1 27000mAh 22.5W Power Bank.jpg"
+      }
+    ];
+
+    const grid = document.getElementById("wishlist-grid");
+
+    gifts.forEach((gift, index) => {
+      const article = document.createElement("article");
+      article.className = "gift-item";
+      article.style.transitionDelay = `${(index % 4) * 60}ms`;
+
+      article.innerHTML = `
+        <div class="gift-image-wrap">
+          <img src="${gift.image}" alt="${gift.title}" class="gift-image" loading="lazy" />
+        </div>
+        <div class="gift-meta">
+          <h2 class="gift-title">${gift.title}</h2>
+          <p class="gift-description">${gift.description}</p>
+        </div>
+      `;
+
+      grid.appendChild(article);
+    });
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    document.querySelectorAll(".gift-item").forEach((item) => {
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

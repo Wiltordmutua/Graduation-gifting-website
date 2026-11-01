@@ -1,0 +1,197 @@
+:root {
+  --bg-white: #ffffff;
+  --surface-blue-tint: #f0f4f9;
+  --gemini-blue-soft: #d3e3fd;
+  --gemini-blue-border: #a8c7fa;
+  --gemini-blue-accent: #1a73e8;
+  --text-primary: #1f1f1f;
+  --text-secondary: #5f6368;
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  background-image: radial-gradient(circle at 50% 0%, #f0f4f9 0%, transparent 60%);
+  background-repeat: no-repeat;
+}
+
+::selection {
+  background-color: var(--gemini-blue-soft);
+  color: var(--text-primary);
+}
+
+.page-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 56px 16px 80px;
+}
+
+/* Header */
+.site-header {
+  max-width: 540px;
+  margin-bottom: 44px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--gemini-blue-accent);
+  background-color: var(--surface-blue-tint);
+  border: 1px solid var(--gemini-blue-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.site-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* 2-Column Mobile Grid by Default */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 12px;
+}
+
+/* Gift Item & Scroll Transition */
+.gift-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s var(--ease-smooth),
+    transform 0.65s var(--ease-smooth);
+}
+
+.gift-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image Frame & Hover Transition */
+.gift-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--surface-blue-tint);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition:
+    transform 0.4s var(--ease-smooth),
+    border-color 0.4s var(--ease-smooth),
+    box-shadow 0.4s var(--ease-smooth);
+}
+
+.gift-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s var(--ease-smooth);
+}
+
+/* Text Below Image */
+.gift-meta {
+  padding-top: 10px;
+}
+
+.gift-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  transition: color 0.3s var(--ease-smooth);
+}
+
+.gift-description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Hover States */
+.gift-item:hover .gift-image-wrap {
+  transform: translateY(-4px);
+  border-color: var(--gemini-blue-border);
+  box-shadow: 0 12px 28px -8px rgba(26, 115, 232, 0.12);
+}
+
+.gift-item:hover .gift-image {
+  transform: scale(1.04);
+}
+
+.gift-item:hover .gift-title {
+  color: var(--gemini-blue-accent);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid var(--surface-blue-tint);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* Tablet (3 Columns) */
+@media (min-width: 768px) {
+  .page-container {
+    padding: 72px 32px 96px;
+  }
+
+  .site-header {
+    margin-bottom: 56px;
+  }
+
+  .site-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .wishlist-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 24px;
+  }
+
+  .gift-title {
+    font-size: 0.98rem;
+  }
+
+  .gift-description {
+    font-size: 0.86rem;
+  }
+}
+
+/* Desktop (4 Columns) */
+@media (min-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 44px 28px;
+  }
+}
